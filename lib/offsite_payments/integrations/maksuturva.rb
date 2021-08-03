@@ -109,6 +109,7 @@ module OffsitePayments #:nodoc:
           fields += [@fields["pmt_buyername"], @fields["pmt_buyeraddress"], @fields["pmt_buyerpostalcode"], @fields["pmt_buyercity"],
           @fields["pmt_buyercountry"], @fields["pmt_deliveryname"], @fields["pmt_deliveryaddress"], @fields["pmt_deliverypostalcode"], @fields["pmt_deliverycity"],
           @fields["pmt_deliverycountry"], @fields["pmt_sellercosts"]]
+          fields += [@fields["pmt_marketplacecommission"]] unless @fields["pmt_marketplacecommission"].nil?
 
           (1..@fields["pmt_rows"].to_i).each do |i|
             fields += [@fields["pmt_row_name#{i}"], @fields["pmt_row_desc#{i}"], @fields["pmt_row_quantity#{i}"]]
@@ -147,6 +148,7 @@ module OffsitePayments #:nodoc:
         mapping :pmt_deliverycity, "pmt_deliverycity"
         mapping :pmt_deliverycountry, "pmt_deliverycountry"
         mapping :pmt_sellercosts, "pmt_sellercosts"
+        mapping :pmt_marketplacecommission, "pmt_marketplacecommission"
         mapping :pmt_rows, "pmt_rows"
 
         (1..499.to_i).each do |i|
